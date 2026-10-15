@@ -1,0 +1,23 @@
+{
+  "name": "lightswitch",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Dark mode for PDFs in Chrome and Edge.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/chrome": "^0.3.5",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
+  }
+}
