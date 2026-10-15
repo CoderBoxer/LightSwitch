@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 96" role="img" aria-label="LightSwitch">
+  <rect x="1" y="1" width="94" height="94" rx="20" fill="#17171a" stroke="#3a3b42" stroke-width="2" />
+  <rect x="17.3" y="34.6" width="61.4" height="26.9" rx="13.4" fill="#e8eaee" />
+  <circle cx="63.8" cy="48" r="9.6" fill="#17171a" />
+  <text x="124" y="49" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="38" font-weight="600" fill="#e8eaee" textLength="214" lengthAdjust="spacingAndGlyphs">LightSwitch</text>
+  <text x="124.5" y="75" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#9a9ca3" textLength="131" lengthAdjust="spacingAndGlyphs">Dark mode for PDFs</text>
+</svg>

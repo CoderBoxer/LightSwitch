@@ -1,12 +1,22 @@
-# LightSwitch
+<p align="center">
+  <img src="assets/logo-dark.svg#gh-dark-mode-only" alt="LightSwitch" width="380" />
+  <img src="assets/logo-light.svg#gh-light-mode-only" alt="LightSwitch" width="380" />
+</p>
 
-[![CI](https://github.com/CoderBoxer/LightSwitch/actions/workflows/ci.yml/badge.svg)](https://github.com/CoderBoxer/LightSwitch/actions/workflows/ci.yml)
-
-Dark mode for PDFs in Chrome and Edge.
+<p align="center">
+  <a href="https://github.com/CoderBoxer/LightSwitch/actions/workflows/ci.yml"><img src="https://github.com/CoderBoxer/LightSwitch/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
+</p>
 
 Chrome and Edge can darken their own UI, but a PDF always renders as a white page and neither browser gives you a setting to change that. LightSwitch fixes the page itself, without touching the file: text becomes light on a dark background, so a lecture PDF at night is readable instead of painful.
 
 Early development: PDFs are covered, website dark mode comes later.
+
+## Screenshots
+
+<p align="center">
+  <img src="assets/popup.png" alt="LightSwitch popup with Soft, Black and Sepia themes plus brightness and contrast sliders" width="150" />
+  <img src="assets/pdf-dark.png" alt="A PDF page rendered dark inside the browser's viewer" width="480" />
+</p>
 
 ## What works today
 
