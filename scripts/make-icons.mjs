@@ -5,6 +5,7 @@ const SIZES = [16, 32, 48, 128]
 const SUBSAMPLES = 4 // per axis, so 16 samples per pixel
 
 const BACKGROUND = [22, 23, 27]
+const BORDER = [58, 59, 66]
 const PILL = [232, 234, 238]
 const KNOB = [22, 23, 27]
 
@@ -25,8 +26,11 @@ function insideCircle(u, v, cx, cy, r) {
 function sampleColor(u, v) {
   if (insideCircle(u, v, 0.665, 0.5, 0.1)) return KNOB
   if (insideRoundedRect(u, v, 0.18, 0.36, 0.82, 0.64, 0.14)) return PILL
-  if (insideRoundedRect(u, v, 0, 0, 1, 1, 0.22)) return BACKGROUND
-  return null
+  if (!insideRoundedRect(u, v, 0.03, 0.03, 0.97, 0.97, 0.2)) {
+    if (insideRoundedRect(u, v, 0, 0, 1, 1, 0.22)) return BORDER
+    return null
+  }
+  return BACKGROUND
 }
 
 function render(size) {
