@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lazy embedded PDF fixture</title>
+    <style>
+      body {
+        margin: 0;
+        background: #fff;
+        font-family: system-ui, sans-serif;
+      }
+      h1 {
+        font-size: 14px;
+        padding: 8px 12px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lazy embedded PDF fixture — the viewer arrives late</h1>
+    <script>
+      setTimeout(() => {
+        const embed = document.createElement('embed')
+        embed.type = 'application/pdf'
+        embed.src = 'sample'
+        embed.width = '100%'
+        embed.height = '680'
+        document.body.append(embed)
+      }, 700)
+    </script>
+  </body>
+</html>

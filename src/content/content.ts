@@ -27,14 +27,22 @@ async function apply() {
   style.textContent = buildPdfStyle(context, settings)
 }
 
-if (!isPdfDocument(document.contentType)) {
-  const observer = new MutationObserver(() => {
-    if (document.querySelector(PDF_EMBED_SELECTOR)) {
-      observer.disconnect()
-      void apply()
+function watchForPdfEmbeds(): void {
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (!(node instanceof Element)) continue
+        if (!node.matches(PDF_EMBED_SELECTOR) && !node.querySelector(PDF_EMBED_SELECTOR)) continue
+        void apply()
+        return
+      }
     }
   })
   observer.observe(document.documentElement, { childList: true, subtree: true })
+}
+
+if (!isPdfDocument(document.contentType)) {
+  watchForPdfEmbeds()
 }
 
 void apply()
