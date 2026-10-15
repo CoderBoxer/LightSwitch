@@ -1,34 +1,5 @@
-import { chromium, expect, test, type BrowserContext, type Page } from '@playwright/test'
-import { mkdtempSync } from 'node:fs'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const extensionPath = fileURLToPath(new URL('../../dist', import.meta.url))
-const baseUrl = 'http://localhost:4173'
-const pdfUrl = `${baseUrl}/sample`
-
-async function launchWithExtension(channel: 'chromium' | 'msedge'): Promise<BrowserContext> {
-  const userDataDir = mkdtempSync(join(tmpdir(), `lightswitch-${channel}-`))
-  return chromium.launchPersistentContext(userDataDir, {
-    channel,
-    headless: false,
-    ignoreDefaultArgs: [
-      '--disable-extensions',
-      '--disable-component-extensions-with-background-pages',
-    ],
-    args: [`--load-extension=${extensionPath}`],
-  })
-}
-
-async function expectDarkenedPdfPage(page: Page) {
-  await page.goto(pdfUrl)
-  expect(await page.evaluate(() => document.contentType)).toBe('application/pdf')
-  await expect(page.locator('#lightswitch-pdf-style')).toHaveCount(1)
-  const filter = await page.evaluate(() => getComputedStyle(document.documentElement).filter)
-  expect(filter).toContain('invert')
-  expect(filter).toContain('hue-rotate(180deg)')
-}
+import { expect, test, type BrowserContext } from '@playwright/test'
+import { baseUrl, expectDarkenedPdfPage, launchWithExtension } from './support'
 
 test('a web-hosted PDF is darkened', async () => {
   const context = await launchWithExtension('chromium')

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="dark" />
+    <title>LightSwitch</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>LightSwitch</h1>
+        <p class="subtitle">Dark mode for PDFs</p>
+      </div>
+      <label class="switch" title="Toggle dark mode">
+        <input type="checkbox" id="enabled" />
+        <span class="track"><span class="thumb"></span></span>
+      </label>
+    </header>
+    <main>
+      <section>
+        <h2>Theme</h2>
+        <div class="presets" id="presets">
+          <button type="button" data-preset="soft">Soft</button>
+          <button type="button" data-preset="black">Black</button>
+          <button type="button" data-preset="sepia">Sepia</button>
+        </div>
+      </section>
+      <section>
+        <h2>Fine tuning</h2>
+        <label class="slider">
+          <span class="row"><span>Brightness</span><output id="brightness-value">100%</output></span>
+          <input type="range" id="brightness" min="50" max="150" step="5" value="100" />
+        </label>
+        <label class="slider">
+          <span class="row"><span>Contrast</span><output id="contrast-value">100%</output></span>
+          <input type="range" id="contrast" min="50" max="150" step="5" value="100" />
+        </label>
+      </section>
+    </main>
+    <p class="footer"><kbd>Alt+Shift+D</kbd> toggles dark mode on any page.</p>
+    <script src="popup.js"></script>
+  </body>
+</html>
