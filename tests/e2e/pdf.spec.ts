@@ -6,9 +6,14 @@ test('a web-hosted PDF is darkened', async () => {
   try {
     const page = await context.newPage()
     await expectDarkenedPdfPage(page)
-    // let the PDF plugin paint its first page before capturing the artifact
-    await page.waitForTimeout(3000)
-    await page.screenshot({ path: 'artifacts/web-pdf.png' })
+    // artifact only: capturing the PDF plugin needs its first paint and is
+    // unreliable on headless Linux, never fail the test over it
+    try {
+      await page.waitForTimeout(3000)
+      await page.screenshot({ path: 'artifacts/web-pdf.png' })
+    } catch {
+      console.log('web-pdf.png skipped: screenshot unavailable in this environment')
+    }
   } finally {
     await context.close()
   }
