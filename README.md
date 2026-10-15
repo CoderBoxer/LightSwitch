@@ -1,5 +1,7 @@
 # LightSwitch
 
+[![CI](https://github.com/CoderBoxer/LightSwitch/actions/workflows/ci.yml/badge.svg)](https://github.com/CoderBoxer/LightSwitch/actions/workflows/ci.yml)
+
 Dark mode for PDFs in Chrome and Edge.
 
 Chrome and Edge can darken their own UI, but a PDF always renders as a white page and neither browser gives you a setting to change that. LightSwitch fixes the page itself, without touching the file: text becomes light on a dark background, so a lecture PDF at night is readable instead of painful.
@@ -10,7 +12,9 @@ Early development: PDFs are covered, website dark mode comes later.
 
 - PDFs opened from the web
 - Local PDFs opened with `file://` (requires "Allow access to file URLs" on the extension's details page)
-- PDFs embedded in a page with `<embed>` / `<object>`
+- PDFs embedded with `<embed>` / `<object>`, including viewers that are added to the page after it has loaded
+- PDFs inline in an `<iframe>`
+- Three themes — Soft, Black and Sepia — plus brightness and contrast sliders in the popup
 - `Alt+Shift+D` toggles the theme on and off
 
 ## How it works
@@ -46,7 +50,10 @@ npm test          # unit tests
 npm run typecheck
 npm run test:e2e  # browser tests; run `npx playwright install chromium` once first
 npm run icons     # regenerates the PNG icons from scripts/make-icons.mjs
+npm run package   # builds and writes release/lightswitch-<version>.zip
 ```
+
+The zip in `release/` is the artifact to upload to the Chrome Web Store and Edge Add-ons.
 
 ## License
 
