@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "LightSwitch",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Dark mode for PDFs opened in Chrome and Edge: files from the web, local files and embedded documents.",
   "icons": {
     "16": "icons/icon16.png",
